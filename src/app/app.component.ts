@@ -1,12 +1,18 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { TokenStorageService } from './token-storage.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'tracker';
+export class AppComponent implements OnInit {
+
+  constructor(private tokenStorageService: TokenStorageService) {}
+
+  ngOnInit(): void {
+    this.tokenStorageService.checkIfThereIsATokenInLocalStorage();
+  }
 }
