@@ -1,1 +1,29 @@
-<p>bugs works!</p>
+@if (bugs$ | async as bugsList) {
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Created</th>
+        <th>Status</th>
+        <th>Reported By</th>
+        <th>Assigned To</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (bug of bugsList ; track bug.id) {
+        <tr>
+          <td>{{ bug.id }}</td>
+          <td>{{ bug.description }}</td>
+          <td>{{ bug.createdAt | date: 'short' }}</td>
+          <td>{{ bug.status }}</td>
+          <td>{{ bug.reportedByUser }}</td>
+          <td>{{ bug.assignedToUser }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
+@else {
+  <p>No bugs in database.</p>
+}

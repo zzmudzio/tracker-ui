@@ -2,15 +2,16 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Token } from "./token.model";
 import { map } from "rxjs";
+import { environment } from "../environment";
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
 
-    LOGIN_API_URL = "http://localhost:8080/auth/login";
-    LOGIN = "admin"
-    PASSWORD = "pass123"
+    private readonly LOGIN_API_URL = `${environment.apiBaseUrl}/auth/login`;
+    private readonly LOGIN = "admin"
+    private readonly PASSWORD = "pass123"
 
     constructor(private httpClient: HttpClient) {}
 

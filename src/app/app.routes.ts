@@ -8,7 +8,7 @@ export const routes: Routes = [
         component: DefaultViewComponent
     },
     {
-        path: 'bugs/:parameter',
+        path: 'bugs/:type',
         component: BugsComponent
     }
 ];
